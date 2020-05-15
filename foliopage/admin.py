@@ -3,5 +3,6 @@ from . import models
 
 # Register your models here.
 admin.site.register(models.Person)
+admin.site.register(models.Skill)
 admin.site.register(models.Project)
 admin.site.register(models.Skilltag)
