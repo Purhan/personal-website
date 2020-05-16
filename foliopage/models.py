@@ -4,9 +4,9 @@ from django.db import models
 class Person(models.Model):
     name = models.CharField(max_length=50)
     role = models.CharField(max_length=50)
-    image = models.ImageField(blank=True, upload_to='images', default='images/avatar.svg')
+    image = models.FileField(blank=True, upload_to='images', default='images/avatar.svg')
     about = models.TextField(max_length=1000)
-    logo = models.ImageField(blank=True, null=True, upload_to='images')
+    logo = models.FileField(blank=True, null=True, upload_to='images')
     resume = models.FileField(blank=True, null=True, upload_to='images')
 
     class Meta:
@@ -73,3 +73,13 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+class SocialMedia(models.Model):
+    name = models.CharField(max_length=500)
+    name_fa = models.CharField(max_length=500)
+    link = models.URLField()
+
+    def __str__(self):
+        return self.name

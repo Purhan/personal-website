@@ -4,252 +4,243 @@
 {% block content %}
 {% for person in person %}
 
-<header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                {% if person.image %} 
+<ul class="circles"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+<header class="masthead animation-area bg-primary text-white text-center">
+    <div class="container mx-auto align-items-center">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+                {% if person.image %}
                 <!-- Masthead Avatar Image--><img class="masthead-avatar mb-4" src="{{ person.image.url }}" alt="">
                 {% endif %}
-                <!-- Masthead Heading-->
-                <h3 class="mb-0">{{ person.name }}.</h3>
-                <!-- Masthead Subheading-->
-                <p class="pre-wrap masthead-subheading font-weight-light mb-0">{{ person.role }}</p>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-dark">
-                    <div class="divider-custom-line"></div>
-                    <a class="floating js-scroll-trigger" href="#section-end"><div class="divider-custom-icon"><i class="fas fa-angle-double-down"></i></div></a>
-                    <div class="divider-custom-line"></div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <!-- Footer Social Icons-->
+                <div class="mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Social Media</h4>
+                {% for social_media in social_media %}
+                    <a class="btn btn-outline-light btn-social mx-1" href="{{social_media.link}}"><i
+                            class="{{social_media.name_fa}}"></i></a>
+                {% endfor %}
                 </div>
             </div>
-        </header>
-        <div id="section-end"></div>
-      
-        <!-- PROJECTS SECTION -->
-        <section class="page-section" id="projects">
-            <div class="container">
-                <!-- Projects Section Heading-->
-                <div class="text-center">
-                    <h2 class="page-section-heading text-secondary d-inline-block mb-0">PROJECTS</h2>
-                </div>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                </div>
+        </div>
 
-                <!-- Projects Section Content-->
-                <div class="row mx-auto align-items justify-content-center">
-                    {% for project in projects_list %}
-                    <div class="row text-align-center mx-auto">
-                        <div class="col-lg-4 col-sm-6 mb-4" data-toggle="modal" data-target="#Modal{{project.priority}}">
-                            <div class="card">
-                                {% if project.image %}<img class="card-img-top" src="{{ project.image.url }}">{% endif %}
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a>{{ project.title }}</a>
-                                    </h4>
-                                    <p class="card-text">{{ project.overview }}</p>
-                                    {% for skills in project.project_skills.all %}<span class="badge-box badge-dark m-1">{{ skills }}</span>{% endfor %}    
-                                </div>
-                            </div>
+        <div class="row">
+            <!-- Masthead Heading-->
+            <h3 class="col-lg-12 mb-0">{{ person.name }}</h3>
+            <!-- Masthead Subheading-->
+            <p class="pre-wrap col-lg-12 masthead-subheading font-weight-light mb-0">{{ person.role }}</p>
+            <!-- Icon Divider-->
+            <div class="divider-custom my-auto divider-dark">
+                <div class="divider-custom-line"></div>
+                <a class="floating js-scroll-trigger" href="#section-end">
+                    <div class="divider-custom-icon"><i class="fas fa-angle-double-down"></i></div>
+                </a>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="section-end"></div>
+
+<!-- PROJECTS SECTION -->
+<section class="page-section" id="projects">
+    <div class="container">
+        <!-- Projects Section Heading-->
+        <div class="text-center">
+            <h2 class="page-section-heading text-secondary d-inline-block mb-0">PROJECTS</h2>
+        </div>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <!-- Projects Section Content-->
+        <div class="row mx-auto align-items justify-content-center">
+            {% for project in projects_list %}
+            <div class="row text-align-center mx-auto">
+                <div class="col-lg-4 col-sm-6 mb-4" data-toggle="modal" data-target="#Modal{{project.priority}}">
+                    <div class="card">
+                        {% if project.image %}<img class="card-img-top" src="{{ project.image.url }}">{% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a>{{ project.title }}</a>
+                            </h4>
+                            <p class="card-text">{{ project.overview }}</p>
+                            {% for skills in project.project_skills.all %}<span
+                                class="badge-box badge-dark m-1">{{ skills }}</span>{% endfor %}
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="modal fade" id="Modal{{project.priority}}" tabindex="-1" role="dialog" aria-labelledby="#portfolioModal0Label" aria-hidden="true">
-                        <div class="modal-dialog modal-xl" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <div class="container">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-8">
-                                                <!-- Project Modal - Title-->
-                                                <h2 class="portfolio-modal-title text-secondary mb-0">{{ project.title }}</h2>
-                                                <!-- Icon Divider-->
-                                                <div class="divider-custom">
-                                                    <div class="divider-custom-line"></div>
-                                                </div>
-                                                <!-- Project Modal - Image-->{% if project.image %}<img class="img-fluid rounded mb-3" src="{{ project.image.url }}" alt="Log Cabin"/>{% endif %}
-                                                <!-- Project Modal - Text-->
-                                                <p>{{ project.description }}</p>
-                                            </div>
+            <div class="modal fade" id="Modal{{project.priority}}" tabindex="-1" role="dialog"
+                aria-labelledby="#portfolioModal0Label" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true"><i class="fas fa-times"></i></span></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8">
+                                        <!-- Project Modal - Title-->
+                                        <h2 class="portfolio-modal-title text-secondary mb-0">{{ project.title }}</h2>
+                                        <!-- Icon Divider-->
+                                        <div class="divider-custom">
+                                            <div class="divider-custom-line"></div>
                                         </div>
+                                        <!-- Project Modal - Image-->{% if project.image %}<img
+                                            class="img-fluid rounded mb-3" src="{{ project.image.url }}"
+                                            alt="Log Cabin" />{% endif %}
+                                        <!-- Project Modal - Text-->
+                                        <p>{{ project.description }}</p>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary m-2" href="#" data-dismiss="modal"><i>Close</i></button>
-                                </div>
                             </div>
                         </div>
-                    </div>                                                            
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-
-        <!-- SKILLS SECTION -->
-        <section class="page-section" id="skills">
-            <div class="container">
-                <!-- Skills Section Heading-->
-                <div class="text-center">
-                    <h2 class="page-section-heading text-secondary d-inline-block mb-0">SKILLS</h2>
-                </div>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                </div>
-
-                <!-- Skills Section Content-->
-                <div class="row mx-auto align-items justify-content-center">
-                    {% for skill in skill %}
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <div class="row text-align-center">
-                            <div class="card mx-auto">
-                                {% if skill.image %}
-                                    <img class="card-img-top" src="{{ skill.image.url }}">
-                                {% endif %}
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a>{{ skill.title }}</a>
-                                    </h4>
-                                    <p class="card-text">{{ skill.overview }}</p>
-                                </div>
-                            </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary m-2" href="#" data-dismiss="modal"><i>Close</i></button>
                         </div>
                     </div>
-                    {% endfor %}
-                </div>    
+                </div>
             </div>
-        </section>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
+<!-- SKILLS SECTION -->
+<section class="page-section" id="skills">
+    <div class="container">
+        <!-- Skills Section Heading-->
+        <div class="text-center">
+            <h2 class="page-section-heading text-secondary d-inline-block mb-0">SKILLS</h2>
+        </div>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+        </div>
 
-
-
-        <!-- EXPERIENCE SECTION -->
-        <section class="page-section" id="experience">
-            <div class="container">
-                <!-- Experience Section Heading-->
-                <div class="text-center">
-                    <h2 class="page-section-heading text-secondary d-inline-block mb-0">EXPERIENCE</h2>
-                </div>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                </div>
-
-                <!-- Experience Section Content-->
-                <div class="row mx-auto align-items justify-content-center">
-                    {% for experience in experience %}
-                    <div class="row text-align-center mx-auto">
-                        <div class="col-lg-4 col-sm-6 mb-4" data-toggle="modal" data-target="#Modal{{experience.priority}}">
-                            <div class="card">
-                                {% if experience.image %}<img class="card-img-top" src="{{ experience.image.url }}">{% endif %}
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a>{{ experience.title }}</a>
-                                    </h4>
-                                    <p class="card-text">{{ experience.overview }}</p>
-                                    {% for experience_skills in experience.experience_skills.all %}<span class="badge-box badge-dark m-1">{{ experience_skills }}</span>{% endfor %}    
-                                </div>
-                            </div>
+        <!-- Skills Section Content-->
+        <div class="row mx-auto align-items justify-content-center">
+            {% for skill in skill %}
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="row text-align-center">
+                    <div class="card mx-auto">
+                        {% if skill.image %}
+                        <img class="card-img-top" src="{{ skill.image.url }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a>{{ skill.title }}</a>
+                            </h4>
+                            <p class="card-text">{{ skill.overview }}</p>
                         </div>
                     </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
-                    <div class="modal fade" id="Modal{{experience.priority}}" tabindex="-1" role="dialog" aria-labelledby="#portfolioModal0Label" aria-hidden="true">
-                        <div class="modal-dialog modal-xl" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <div class="container">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-8">
-                                                <!-- Experience Modal - Title-->
-                                                <h2 class="text-secondary mb-0">{{ experience.title }}</h2>
-                                                <!-- Icon Divider-->
-                                                <div class="divider-custom">
-                                                    <div class="divider-custom-line"></div>
-                                                </div>
-                                                <!-- Experience Modal - Image-->{% if experience.image %}<img class="img-fluid rounded mb-3" src="{{ experience.image.url }}"/>{% endif %}
-                                                <!-- Experience Modal - Text-->
-                                                <p>{{ experience.description }}</p>
-                                            </div>
+
+
+
+<!-- EXPERIENCE SECTION -->
+<section class="page-section" id="experience">
+    <div class="container">
+        <!-- Experience Section Heading-->
+        <div class="text-center">
+            <h2 class="page-section-heading text-secondary d-inline-block mb-0">EXPERIENCE</h2>
+        </div>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <!-- Experience Section Content-->
+        <div class="row mx-auto align-items justify-content-center">
+            {% for experience in experience %}
+            <div class="row text-align-center mx-auto">
+                <div class="col-lg-4 col-sm-6 mb-4" data-toggle="modal" data-target="#Modal{{experience.priority}}">
+                    <div class="card">
+                        {% if experience.image %}<img class="card-img-top" src="{{ experience.image.url }}">{% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a>{{ experience.title }}</a>
+                            </h4>
+                            <p class="card-text">{{ experience.overview }}</p>
+                            {% for experience_skills in experience.experience_skills.all %}<span
+                                class="badge-box badge-dark m-1">{{ experience_skills }}</span>{% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="Modal{{experience.priority}}" tabindex="-1" role="dialog"
+                aria-labelledby="#portfolioModal0Label" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true"><i class="fas fa-times"></i></span></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8">
+                                        <!-- Experience Modal - Title-->
+                                        <h2 class="text-secondary mb-0">{{ experience.title }}</h2>
+                                        <!-- Icon Divider-->
+                                        <div class="divider-custom">
+                                            <div class="divider-custom-line"></div>
                                         </div>
+                                        <!-- Experience Modal - Image-->{% if experience.image %}<img
+                                            class="img-fluid rounded mb-3"
+                                            src="{{ experience.image.url }}" />{% endif %}
+                                        <!-- Experience Modal - Text-->
+                                        <p>{{ experience.description }}</p>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary m-2" href="#" data-dismiss="modal"><i>Close</i></button>
-                                </div>
                             </div>
                         </div>
-                    </div>                                                            
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-
-
-
-
-        <!-- ABOUT SECTION -->
-        <section class="page-section bg-secondary text-white mb-0" id="about">
-            <div class="container">
-                <!-- About Section Heading-->
-                <div class="text-center">
-                    <h2 class="page-section-heading d-inline-block text-white">ABOUT</h2>
-                </div>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- About Section Content-->
-                <div class="row">
-                    <div class="col text-center ml-auto">
-                        <p class="pre-wrap lead">{{ person.about }}</p>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary m-2" href="#" data-dismiss="modal"><i>Close</i></button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-       
-       
-       
-       
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
 
 
 
-       
-
-
-
-
-
-    {% comment %} {{ projects.title }} {% endcomment %}
+<!-- ABOUT SECTION -->
+<section class="page-section bg-secondary text-white mb-0" id="about">
+    <div class="container">
+        <!-- About Section Heading-->
+        <div class="text-center">
+            <h2 class="page-section-heading d-inline-block text-white">ABOUT</h2>
+        </div>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- About Section Content-->
+        <div class="row">
+            <div class="col text-center ml-auto">
+                <p class="pre-wrap lead">{{ person.about }}</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endfor %}
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .models import Project, Person, Skill, Experience
+from .models import Project, Person, Skill, Experience, SocialMedia
 
 # Create your views here.
 def index(request):
@@ -8,11 +8,13 @@ def index(request):
     person = Person.objects.all()
     skill = Skill.objects.all()
     experience = Experience.objects.all()
+    social_media = SocialMedia.objects.all()
     context = {
         'projects_list': projects_list,
         'person': person,
         'skill': skill,
         'experience': experience,
+        'social_media': social_media,
     }
     return render(request, 'index.html', context)
 
