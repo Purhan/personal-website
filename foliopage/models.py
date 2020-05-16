@@ -6,6 +6,8 @@ class Person(models.Model):
     role = models.CharField(max_length=50)
     image = models.ImageField(blank=True, upload_to='images', default='images/avatar.svg')
     about = models.TextField(max_length=1000)
+    logo = models.ImageField(blank=True, null=True, upload_to='images')
+    resume = models.FileField(blank=True, null=True, upload_to='images')
 
     class Meta:
         verbose_name_plural = "Person"

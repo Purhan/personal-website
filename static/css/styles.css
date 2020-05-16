@@ -20,6 +20,8 @@
   --gray-dark: #343a40;
   --primary: #24305e;
   --secondary: #374785;
+  --tertiary: #1c1c47;
+  --main-dark: #0c0c1f;
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
@@ -1791,11 +1793,11 @@ fieldset:disabled a.btn {
   .btn-primary:hover {
     color: #fff;
     background-color: #0e6f8f;
-    border-color: #0d6683; }
+    border-color: var(--tertiary); }
   .btn-primary:focus, .btn-primary.focus {
     color: #fff;
     background-color: #0e6f8f;
-    border-color: #0d6683;
+    border-color: var(--tertiary);
     box-shadow: 0 0 0 0.2rem rgba(53, 156, 190, 0.5); }
   .btn-primary.disabled, .btn-primary:disabled {
     color: #fff;
@@ -1803,7 +1805,7 @@ fieldset:disabled a.btn {
     border-color: var(--primary); }
   .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #0d6683;
+    background-color: var(--tertiary);
     border-color: #0b5d78; }
     .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
       box-shadow: 0 0 0 0.2rem rgba(53, 156, 190, 0.5); }
@@ -3652,7 +3654,7 @@ input[type="button"].btn-block {
   background-color: var(--primary); }
   a.badge-primary:hover, a.badge-primary:focus {
     color: #fff;
-    background-color: #0d6683; }
+    background-color: var(--tertiary); }
   a.badge-primary:focus, a.badge-primary.focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(17, 138, 178, 0.5); }
@@ -4746,7 +4748,7 @@ a.close.disabled {
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #0d6683 !important; }
+  background-color: var(--tertiary) !important; }
 
 .bg-secondary {
   background-color: var(--secondary) !important; }
@@ -4893,7 +4895,9 @@ button.bg-dark:focus {
   border-radius: 0.75rem !important; }
 
 .rounded-circle {
-  border-radius: 50% !important; }
+  border-radius: 50% !important; 
+  background-color: var(--tertiary);
+}
 
 .rounded-pill {
   border-radius: 50rem !important; }
@@ -7263,9 +7267,9 @@ h3 {
   bottom: 1rem;
   display: none; }
   .scroll-to-top a {
-    width: 3.5rem;
-    height: 3.5rem;
-    background-color: rgba(33, 37, 41, 0.5);
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--tertiary);
     line-height: 3.1rem; }
 
 #mainNav {
@@ -7419,7 +7423,7 @@ form .row:first-child .floating-label-form-group {
   color: #fff; }
 
 .copyright {
-  background-color: #03171d; }
+  background-color: var(--main-dark); }
 
 #brandImage {
   height: 2rem; }
