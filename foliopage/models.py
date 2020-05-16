@@ -6,6 +6,9 @@ class Person(models.Model):
     role = models.CharField(max_length=50)
     image = models.ImageField(blank=True, upload_to='images', default='images/avatar.svg')
     about = models.TextField(max_length=1000)
+
+    class Meta:
+        verbose_name_plural = "Person"
     
     def save(self, *args, **kwargs):
         if not self.image:
@@ -23,8 +26,11 @@ class Project(models.Model):
     overview = models.TextField(max_length=200)
     description = models.TextField()
     image = models.ImageField(blank=True, null=True, upload_to='images')
-    priority = models.IntegerField(default=0)
-    skills = models.ManyToManyField('Skilltag')
+    priority = models.IntegerField(unique=True)
+    project_skills = models.ManyToManyField('Skilltag', blank=True)
+
+    class Meta:
+        ordering = ["priority"]
 
     def __str__(self):
         return self.title
@@ -43,6 +49,25 @@ class Skill(models.Model):
     overview = models.TextField(max_length=300)
     image = models.ImageField(blank=True, null=True, upload_to='images')
     priority = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ["priority"]
+
+    def __str__(self):
+        return self.title
+
+
+
+class Experience(models.Model):
+    title = models.CharField(max_length=100)
+    overview = models.TextField(max_length=200)
+    description = models.TextField()
+    image = models.ImageField(blank=True, null=True, upload_to='images')
+    priority = models.IntegerField(default=0)
+    experience_skills = models.ManyToManyField('Skilltag', blank=True)
+
+    class Meta:
+        ordering = ["priority"]
 
     def __str__(self):
         return self.title

@@ -36,19 +36,20 @@
                 </div>
                 <!-- Projects Section Content-->
                 <div class="row justify-content-center">
-                        <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex align-items-center">
 
                             {% for project in projects_list %}
-                                <div class="card btn p-0" data-toggle="modal" data-target="#{{project.name}}Modal">
-                                    <img class="card-img-top" src="{{ project.image.url }}">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ project.title }}</h5>
-                                        <p class="card-text">{{ project.overview }}</p>
-                                        {% for skills in project.skills.all %}<span class="badge-box badge-dark m-1">{{ skills }}</span>{% endfor %}
+                                <div class="card flex-column btn m-2 p-0 pb-3" data-toggle="modal" data-target="#Modal{{project.priority}}">
+                                    {% if project.image %}<img class="card-img-top" src="{{ project.image.url }}">{% endif %}
+                                    <div class="admin/foliopage/project/card-body">
+                                        <h5 class="card-title m-2">{{ project.title }}</h5>
+                                        <p class="card-text m-2">{{ project.overview }}</p>
+                                        {% for skills in project.project_skills.all %}<span class="badge-box badge-dark m-1">{{ skills }}</span>{% endfor %}
                                     </div>
                                 </div>
 
-                                <div class="modal fade" id="{{project.name}}Modal" tabindex="-1" role="dialog" aria-labelledby="#portfolioModal0Label" aria-hidden="true">
+                                
+                                <div class="modal fade" id="Modal{{project.priority}}" tabindex="-1" role="dialog" aria-labelledby="#portfolioModal0Label" aria-hidden="true">
                                     <div class="modal-dialog modal-xl" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -64,7 +65,7 @@
                                                             <div class="divider-custom">
                                                                 <div class="divider-custom-line"></div>
                                                             </div>
-                                                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-3" src="{{ project.image.url }}" alt="Log Cabin"/>
+                                                            <!-- Portfolio Modal - Image-->{% if project.image %}<img class="img-fluid rounded mb-3" src="{{ project.image.url }}" alt="Log Cabin"/>{% endif %}
                                                             <!-- Portfolio Modal - Text-->
                                                             <p>{{ project.description }}</p>
                                                         </div>
