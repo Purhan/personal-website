@@ -34,19 +34,63 @@
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
                 </div>
+
+
+
+                {% comment %} <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4" data-toggle="modal" data-target="#Modal{{project.priority}}">
+                      <div class="card">
+                        {% if project.image %}<img class="card-img-top" src="{{ project.image.url }}">{% endif %}
+                            <div class="card-body">
+                          <h4 class="card-title">
+                            <a>{{ project.title }}</a>
+                          </h4>
+                          <p class="card-text">{{ project.overview }}</p>
+                          {% for skills in project.project_skills.all %}<span class="card-footer badge-box badge-dark m-1">{{ skills }}</span>{% endfor %}
+                        </div>
+                      </div>
+                </div> {% endcomment %}
+
+
+
+
+
+
+
+
                 <!-- Projects Section Content-->
-                <div class="row justify-content-center">
-                        <div class="d-flex align-items-center">
+                <div class="row mx-md-n5 align-items justify-content-center">
+                        {% comment %} <div class="align-items-center"> {% endcomment %}
 
                             {% for project in projects_list %}
-                                <div class="card flex-column btn m-2 p-0 pb-3" data-toggle="modal" data-target="#Modal{{project.priority}}">
+                                {% comment %} <div class="card p-0 pb-3" data-toggle="modal" data-target="#Modal{{project.priority}}">
                                     {% if project.image %}<img class="card-img-top" src="{{ project.image.url }}">{% endif %}
                                     <div class="admin/foliopage/project/card-body">
                                         <h5 class="card-title m-2">{{ project.title }}</h5>
                                         <p class="card-text m-2">{{ project.overview }}</p>
                                         {% for skills in project.project_skills.all %}<span class="badge-box badge-dark m-1">{{ skills }}</span>{% endfor %}
                                     </div>
+                                </div> {% endcomment %}
+
+
+
+                                <div class="row text-align-center">
+                                    <div class="col-lg-4 col-sm-6 mb-4" data-toggle="modal" data-target="#Modal{{project.priority}}">
+                                        <div class="card mr-2 ml-2">
+                                            {% if project.image %}<img class="card-img-top" src="{{ project.image.url }}">{% endif %}
+                                            <div class="card-body">
+                                                <h4 class="card-title">
+                                                    <a>{{ project.title }}</a>
+                                                </h4>
+                                                <p class="card-text">{{ project.overview }}</p>
+                                                {% for skills in project.project_skills.all %}<span class="badge-box badge-dark m-1">{{ skills }}</span>{% endfor %}    
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
+
+
 
                                 
                                 <div class="modal fade" id="Modal{{project.priority}}" tabindex="-1" role="dialog" aria-labelledby="#portfolioModal0Label" aria-hidden="true">
@@ -79,7 +123,7 @@
                                     </div>
                                 </div>                                                            
                                 {% endfor %}
-                            </div>
+                            {% comment %} </div> {% endcomment %}
                         </div>
                     </div>
                 </div>
