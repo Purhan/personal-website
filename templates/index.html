@@ -4,7 +4,18 @@
 {% block content %}
 {% for person in person %}
 
-<ul class="circles"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+<ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
 <header class="masthead animation-area bg-primary text-white text-center">
     <div class="container mx-auto align-items-center">
         <div class="row align-items-center">
@@ -14,13 +25,17 @@
                 {% endif %}
             </div>
             <div class="col-lg-6 col-md-6">
-                <!-- Footer Social Icons-->
-                <div class="mb-5 mb-lg-0">
+                <!-- Social Icons-->
+                <div class="mb-lg-0">
                     <h4 class="text-uppercase mb-4">Social Media</h4>
-                {% for social_media in social_media %}
+                    <!-- Icon Divider-->
+                    <div class="divider-custom">
+                        <div class="divider-custom-line"></div>
+                    </div>
+                    {% for social_media in social_media %}
                     <a class="btn btn-outline-light btn-social mx-1" href="{{social_media.link}}"><i
                             class="{{social_media.name_fa}}"></i></a>
-                {% endfor %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -35,6 +50,8 @@
                 <div class="divider-custom-line"></div>
                 <a class="floating js-scroll-trigger" href="#section-end">
                     <div class="divider-custom-icon"><i class="fas fa-angle-double-down"></i></div>
+                    <!-- <div class="divider-custom my-auto divider-light">
+                    </div> -->
                 </a>
                 <div class="divider-custom-line"></div>
             </div>
@@ -66,7 +83,7 @@
 
 
 <!-- PROJECTS SECTION -->
-<section class="page-section" id="projects">
+<section class="page-section p-5" id="projects">
     <div class="container">
         <!-- Projects Section Heading-->
         <div class="text-center">
@@ -115,8 +132,8 @@
                                             <div class="divider-custom-line"></div>
                                         </div>
                                         <!-- Project Modal - Image-->{% if project.image %}<img
-                                            class="img-fluid rounded mb-3" src="{{ project.image.url }}"
-                                            alt="Log Cabin" />{% endif %}
+                                            class="img-fluid rounded mb-3" src="{{ project.image.url }}" />
+                                        {% endif %}
                                         <!-- Project Modal - Text-->
                                         <p>{{ project.description }}</p>
                                     </div>
@@ -135,7 +152,7 @@
 </section>
 
 <!-- SKILLS SECTION -->
-<section class="page-section" id="skills">
+<section class="page-section pb-0" id="skills">
     <div class="container">
         <!-- Skills Section Heading-->
         <div class="text-center">
@@ -173,7 +190,7 @@
 
 
 <!-- EXPERIENCE SECTION -->
-<section class="page-section" id="experience">
+<section class="page-section pb-0" id="experience">
     <div class="container">
         <!-- Experience Section Heading-->
         <div class="text-center">
