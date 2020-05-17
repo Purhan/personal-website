@@ -4,7 +4,7 @@ from django.db import models
 class Person(models.Model):
     name = models.CharField(max_length=50)
     role = models.CharField(max_length=50)
-    image = models.FileField(blank=True, upload_to='images', default='images/avatar.svg')
+    image = models.FileField(blank=True, upload_to='images', default='static/assets/img/avatar.svg')
     about = models.TextField(max_length=1000)
     logo = models.FileField(blank=True, null=True, upload_to='images')
     resume = models.FileField(blank=True, null=True, upload_to='images')
@@ -14,7 +14,7 @@ class Person(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.image:
-            self.image = 'images/avatar.svg'
+            self.image = 'static/assets/img/avatar.svg'
         if self.__class__.objects.count():
             self.pk = self.__class__.objects.first().pk
         super().save(*args, **kwargs)

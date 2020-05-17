@@ -43,6 +43,28 @@
 </header>
 <div id="section-end"></div>
 
+
+<!-- ABOUT SECTION -->
+<section class="page-section bg-secondary text-white mb-0" id="about">
+    <div class="container">
+        <!-- About Section Heading-->
+        <div class="text-center">
+            <h2 class="page-section-heading d-inline-block text-white">ABOUT</h2>
+        </div>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- About Section Content-->
+        <div class="row">
+            <div class="col text-center ml-auto">
+                <p class="pre-wrap lead">{{ person.about }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <!-- PROJECTS SECTION -->
 <section class="page-section" id="projects">
     <div class="container">
@@ -219,28 +241,6 @@
     </div>
 </section>
 
-
-
-
-<!-- ABOUT SECTION -->
-<section class="page-section bg-secondary text-white mb-0" id="about">
-    <div class="container">
-        <!-- About Section Heading-->
-        <div class="text-center">
-            <h2 class="page-section-heading d-inline-block text-white">ABOUT</h2>
-        </div>
-        <!-- Icon Divider-->
-        <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- About Section Content-->
-        <div class="row">
-            <div class="col text-center ml-auto">
-                <p class="pre-wrap lead">{{ person.about }}</p>
-            </div>
-        </div>
-    </div>
-</section>
 
 {% endfor %}
 {% endblock %}
